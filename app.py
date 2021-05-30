@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -17,12 +17,15 @@ def hello_world():
 
 
 @app.route("/new_entry")
-def good_bye():
+def new_entry():
     global entries
 
+    title_from_user = request.args.get('title')
+    description_from_user = request.args.get('description')
+
     entries.append({
-        "title": "new entry",
-        "description": "new description"
+        "title": title_from_user,
+        "description": description_from_user
     })
 
     return "Success"
