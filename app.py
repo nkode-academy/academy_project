@@ -7,13 +7,20 @@ entries = []
 
 @app.route("/")
 def hello_world():
-    result = ""
+    result = """<form action="/new_entry">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description">
+    <input type="submit" value="Submit">
+    </form>"""
+
     for entry in entries:
         result += "<p>{title} - {description}</p>".format(
             title=entry["title"],
             description=entry["description"])
 
-    return result
+    return result 
 
 
 @app.route("/new_entry")
