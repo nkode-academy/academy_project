@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 
 app = Flask(__name__)
 
@@ -35,4 +35,4 @@ def new_entry():
         "description": description_from_user
     })
 
-    return "Success"
+    return redirect("/")
