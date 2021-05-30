@@ -6,7 +6,7 @@ entries = []
 
 
 @app.route("/")
-def hello_world():
+def home():
     return render_template('home.html', entries=entries)
 
 
