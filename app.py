@@ -13,4 +13,4 @@ def hello_world():
 
 @app.route("/bye/123")
 def good_bye():
-    return "goodbye"
+    return "bye , hope to see you soon"
