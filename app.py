@@ -1,17 +1,28 @@
 from flask import Flask
 
 app = Flask(__name__)
-counter = 0
+
+entries = []
 
 
 @app.route("/")
 def hello_world():
-    global counter
-    counter = counter + 1
-    return "<p>juhu dies ist der first versuch{}</p>".format(counter)
+    result = ""
+    for entry in entries:
+        result += "<p>{title} - {description}</p>".format(
+            title=entry["title"],
+            description=entry["description"])
+
+    return result
 
 
-@app.route("/bye/123")
+@app.route("/new_entry")
 def good_bye():
-    return "haha ich hab auch was geändert, hope to see you soon" 
-    
+    global entries
+
+    entries.append({
+        "title": "new entry",
+        "description": "new description"
+    })
+
+    return "Success"
