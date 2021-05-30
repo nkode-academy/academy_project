@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, render_template
 
 app = Flask(__name__)
 
@@ -7,20 +7,7 @@ entries = []
 
 @app.route("/")
 def hello_world():
-    result = """<form action="/new_entry">
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title"><br>
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description">
-    <input type="submit" value="Submit">
-    </form>"""
-
-    for entry in entries:
-        result += "<p>{title} - {description}</p>".format(
-            title=entry["title"],
-            description=entry["description"])
-
-    return result 
+    return render_template('home.html', entries=entries)
 
 
 @app.route("/new_entry")

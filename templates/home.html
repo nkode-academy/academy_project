@@ -1,0 +1,11 @@
+<form action="/new_entry">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description">
+    <input type="submit" value="Submit">
+</form>
+
+{%for entry in entries%}
+<p>{{ entry["title"] }} - {{ entry["description"] }}</p>
+{%endfor%}
