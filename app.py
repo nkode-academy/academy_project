@@ -7,6 +7,7 @@ entries = []
 
 @app.route("/")
 def hello_world():
+    
     return render_template('home.html', entries=entries)
 
 
@@ -21,5 +22,6 @@ def new_entry():
         "title": title_from_user,
         "description": description_from_user
     })
+
 
     return redirect("/")
