@@ -11,13 +11,13 @@ def hello_world():
     return render_template('home.html', entries=entries)
 
 
-@app.route("/new_entry")
+@app.route("/new_entry", methods=['GET'])
+def type_dropdown():
+        types = ['Restaurant', 'Hotel', 'Museum', 'Location']
+        return render_template('home.html', entries=entries)
+
 def new_entry():
     global entries
-
-    def type_dropdown():
-        types = ['Restaurant', 'Hotel', 'Museum', 'Location']
-        return type_of_new_entry
 
     type_of_new_entry = request.args.get('type')
     title_from_user = request.args.get('title')

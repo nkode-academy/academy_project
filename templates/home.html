@@ -6,6 +6,12 @@
 
 
 <form action="/new_entry">
+    <label for="type">Type:</label><br>
+    <select name= type method="GET" action="/">
+        {% for type in types %}
+        <option value= "{{type}}" SELECTED>{{type}}</option>"
+        {% endfor %}
+    </select>
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
     <label for="description">Description:</label><br>
