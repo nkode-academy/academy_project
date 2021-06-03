@@ -14,10 +14,16 @@ def home():
 def new_entry():
     global entries
 
+    def type_dropdown():
+        types = ['Restaurant', 'Hotel', 'Museum', 'Location']
+        return type_of_new_entry
+
+    type_of_new_entry = request.args.get('type')
     title_from_user = request.args.get('title')
     description_from_user = request.args.get('description')
 
     entries.append({
+        "type": type_of_new_entry,
         "title": title_from_user,
         "description": description_from_user
     })
