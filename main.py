@@ -7,14 +7,8 @@ entries = []
 
 @app.route("/")
 def hello_world():
+    return render_template('home.jinja', entries=reversed(entries), location_types=['Restaurant', 'Hotel', 'Museum', 'Location'])
 
-    return render_template('home.html', entries=reversed(entries))
-
-
-
-def type_dropdown():
-    types = ['Restaurant', 'Hotel', 'Museum', 'Location']
-    return render_template('home.html', entries=entries)
 
 @app.route("/new_entry", methods=['GET'])
 def new_entry():
@@ -29,7 +23,7 @@ def new_entry():
         "title": title_from_user,
         "description": description_from_user
     })
-    
+
     return redirect("/")
 
 
