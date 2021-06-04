@@ -16,11 +16,12 @@
 
 <form action="/new_entry">
     <label for="type">Type:</label><br>
-    <select name= type method="GET" action="/">
-        {% for type in types %}
-        <option value= "{{type}}" SELECTED>{{type}}</option>"
-        {% endfor %}
-    </select>
+    <select name="type" method="GET" action="/">
+        <option value="restaurant" >Super Fancy Restaurant</option>
+        <option value="bars" SELECTED>Bars</option>
+        <option value="museum" >Museum</option>
+        <option value="locations" >Locations</option>
+    </select><br>
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
     <label for="description">Description:</label><br>
@@ -29,7 +30,7 @@
 </form>
 
 {%for entry in entries%}
-<p>{{ entry["title"] }} - {{ entry["description"] }}</p>
+<p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["description"] }}</p>
 {%endfor%}
 
 <iframe
