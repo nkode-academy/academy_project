@@ -31,8 +31,6 @@
 
 {%for entry in entries%}
 <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["description"] }}</p>
-{%endfor%}
-
 <iframe
   width="600"
   height="450"
@@ -40,5 +38,7 @@
   loading="lazy"
   allowfullscreen
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPWjc5ye-z_PiPj3Q9BttUasp5k8zj6xY
-    &q=NOPI,Warwick+Street,London+UK">
+    &q={{ entry["title"] }}">
 </iframe>
+{%endfor%}
+

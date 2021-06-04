@@ -8,7 +8,7 @@ entries = []
 @app.route("/")
 def hello_world():
 
-    return render_template('home.html', entries=entries)
+    return render_template('home.html', entries=reversed(entries))
 
 
 
