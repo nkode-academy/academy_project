@@ -6,20 +6,33 @@ entries = []
 
 
 @app.route("/")
-def home():
+def hello_world():
+
     return render_template('home.html', entries=entries)
 
 
-@app.route("/new_entry")
+@app.route("/new_entry", methods=['GET'])
+def type_dropdown():
+    types = ['Restaurant', 'Hotel', 'Museum', 'Location']
+    return render_template('home.html', entries=entries)
+
+
 def new_entry():
     global entries
 
+    type_of_new_entry = request.args.get('type')
     title_from_user = request.args.get('title')
     description_from_user = request.args.get('description')
 
     entries.append({
+        "type": type_of_new_entry,
         "title": title_from_user,
         "description": description_from_user
     })
 
     return redirect("/")
+
+
+if __name__ == '__main__':
+    # this is run when clicking the run button in VSCode
+    app.run(host='127.0.0.1', port=8080, debug=True)

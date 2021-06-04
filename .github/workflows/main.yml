@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: default
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - id: deploy
+      name: Deploy to Google App Engine
+      uses: google-github-actions/deploy-appengine@main
+      with:
+        project_id: academy-315805
+        credentials: ${{ secrets.GCP_CREDENTIALS }}

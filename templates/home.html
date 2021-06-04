@@ -15,6 +15,12 @@
 
 
 <form action="/new_entry">
+    <label for="type">Type:</label><br>
+    <select name= type method="GET" action="/">
+        {% for type in types %}
+        <option value= "{{type}}" SELECTED>{{type}}</option>"
+        {% endfor %}
+    </select>
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
     <label for="description">Description:</label><br>
@@ -23,6 +29,15 @@
 </form>
 
 {%for entry in entries%}
-<p>{{ entry["title"] }} - - {{ entry["description"] }}</p>
+<p>{{ entry["title"] }} - {{ entry["description"] }}</p>
 {%endfor%}
 
+<iframe
+  width="600"
+  height="450"
+  style="border:0"
+  loading="lazy"
+  allowfullscreen
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPWjc5ye-z_PiPj3Q9BttUasp5k8zj6xY
+    &q=NOPI,Warwick+Street,London+UK">
+</iframe>
