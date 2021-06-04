@@ -11,12 +11,12 @@ def hello_world():
     return render_template('home.html', entries=entries)
 
 
-@app.route("/new_entry", methods=['GET'])
+
 def type_dropdown():
     types = ['Restaurant', 'Hotel', 'Museum', 'Location']
     return render_template('home.html', entries=entries)
 
-
+@app.route("/new_entry", methods=['GET'])
 def new_entry():
     global entries
 
