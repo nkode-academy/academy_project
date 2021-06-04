@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
     - id: deploy
+      name: Deploy to Google App Engine
       uses: google-github-actions/deploy-appengine@main
       with:
         credentials: ${{ secrets.GCP_CREDENTIALS }}
