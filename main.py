@@ -7,7 +7,7 @@ entries = []
 
 @app.route("/")
 def hello_world():
-    return render_template('home.jinja', entries=reversed(entries), location_types=['Restaurant', 'Hotel', 'Museum', 'Location'])
+    return render_template('home.html', entries=reversed(entries), location_types=['Restaurant', 'Hotel', 'Museum', 'Location'])
 
 
 @app.route("/new_entry", methods=['GET'])
