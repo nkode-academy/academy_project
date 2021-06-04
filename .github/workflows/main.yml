@@ -15,4 +15,5 @@ jobs:
       name: Deploy to Google App Engine
       uses: google-github-actions/deploy-appengine@main
       with:
+        project_id: academy-315805
         credentials: ${{ secrets.GCP_CREDENTIALS }}
