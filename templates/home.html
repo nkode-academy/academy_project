@@ -44,8 +44,7 @@
 </form>
 
 {%for entry in entries%}
-<p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["description"] }}</p>
-<iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPWjc5ye-z_PiPj3Q9BttUasp5k8zj6xY
-    &q={{ entry["title"] }}">
-</iframe>
+<a href="/details?title={{ entry["title"] }}">
+    <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["description"] }}</p>
+</a>
 {%endfor%}

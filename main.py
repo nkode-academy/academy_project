@@ -6,8 +6,15 @@ entries = []
 
 
 @app.route("/")
-def hello_world():
+def home():
     return render_template('home.html', entries=reversed(entries), location_types=['Restaurant', 'Hotel', 'Museum', 'Location'])
+
+
+@app.route("/details")
+def details():
+    title = request.args.get('title')
+
+    return render_template('details.html', title=title)
 
 
 @app.route("/new_entry", methods=['GET'])
