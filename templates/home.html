@@ -2,6 +2,7 @@
     html {
         box-sizing: border-box;
         
+        
         background-color:aliceblue;
         background-image: linear-gradient(#f0f8ff, #447aaa);
 
@@ -11,7 +12,22 @@
         font-weight: bolder;
         padding-left: 100px;
     }
-
+    form{
+        border: 2px solid cadetblue;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+    .type{
+        height: 300px;
+        background: cornsilk;
+    }
+    .title{
+        height: 300px;
+        background: darkgray;
+    }
+ 
     label {
         color: rgb(10, 8, 88);
         padding: 10px;
@@ -26,18 +42,22 @@
     }
 
     h1 {
-        border: 2px cadetblue;
+        border: 2px solid cadetblue;
+        height:100px;
+        
         color: rgb(10, 8, 88);
         text-align:center;
     }
     p {
+        border: 2px solid cadetblue;
         color: rgb(10, 8, 88);
         font-style: initial; 
-        padding-left: 100px;
+        padding-left:initial;
+        text-align: center;
     }
 </style>
 <h1>
-    <p>Academy preferred Locations</p>
+    <p1>Academy preferred Locations</p1>
 </h1>
 
 <form action="/new_entry">
