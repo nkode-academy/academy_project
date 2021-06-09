@@ -1,12 +1,71 @@
-<style>
-    html {
-        background-color: aliceblue
-    }
-</style>
-<h1>
-    OUR superfancy restimaps details {{ title }}
-</h1>
+<html>
+    <head>
+        <title>Restaurant details</title>
+        <style type="text/css">
+            body{
+                text-align: center;
+                color: black;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            a{
+                font-size: 20;
+            }
+            .container{
+                display: flex;
+                justify-content: space-around;
+            }
+            .box-1{
+                flex: 1;
+                border: 1px solid black;
+                margin: 5px;
+            }
+            .box-2{
+                flex: 2;
+                border: 1px solid black;
+                margin: 5px;
+            }
+            .box-3{
+                flex: 2;
+                border: 1px solid black;
+                margin: 5px;
+            }
+        </style>
+    </head>
 
-<iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPWjc5ye-z_PiPj3Q9BttUasp5k8zj6xY
-    &q={{title}}">
-</iframe>
+    <body>
+        <a href=/Users/dad/Programming/Academy_Final_Project/ramen.jpeg>
+            <img height=200 src="/Users/dad/Programming/Academy_Final_Project/ramen.jpeg" alt="Top website picture">
+        </a>
+        <br><br>
+        <h1>
+        Restaurant Details Page
+        </h1>
+        <br><br>
+        <div class="container">
+            <div class="box-1">
+                <iframe width="450" height="300" style="border:1px" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPWjc5ye-z_PiPj3Q9BttUasp5k8zj6xY
+            &q={{title}}">
+                </iframe>
+            </div>
+            <div class="box-2">
+                <h2>
+                    Description and Rating
+                </h2>
+                <p>
+                    it is so wonderful
+                </p>
+            </div>
+            <div class="box-3">
+                <h2>
+                    Must Order
+                </h2>
+                <p>
+                    insert must order reference here (or alternatives)
+                </p>
+            </div>
+        </div>
+        <br><br>
+        <a href="./home.html">back to homepage</a>
+        
+    </body>
+    
