@@ -12,10 +12,9 @@ def home():
 
 @app.route("/details")
 def details():
-    title = request.args.get('title')
-    description = request.args.get('description')
+    index = int(request.args.get('index'))
 
-    return render_template('details.html', title=title, description=description)
+    return render_template('details.html', entry=entries[index])
 
 
 @app.route("/new_entry", methods=['GET'])
@@ -26,12 +25,15 @@ def new_entry():
     title_from_user = request.args.get('title')
     city_from_user = request.args.get('city')
     description_from_user = request.args.get('description')
+    rating_from_user = request.args.get('rating')
 
     entries.append({
+        "id": len(entries),
         "type": type_of_new_entry,
         "title": title_from_user,
         "city": city_from_user,
-        "description": description_from_user
+        "description": description_from_user,
+        "rating": rating_from_user
     })
 
     return redirect("/")

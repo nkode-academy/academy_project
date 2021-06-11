@@ -85,7 +85,7 @@
 </form>
 
 {%for entry in entries%}
-<a href="/details?title={{ entry["title"] }}">
+<a href="/details?index={{ entry["id"] }}">
     <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
 </a>
 {%endfor%}
