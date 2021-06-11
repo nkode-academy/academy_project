@@ -1,8 +1,12 @@
 from flask import Flask, request, redirect, render_template
+import csv
 
 app = Flask(__name__)
 
+input_file = csv.DictReader(open("entries.csv"))
 entries = []
+for row in input_file:
+    entries.append(row)
 
 
 @app.route("/")
@@ -35,6 +39,11 @@ def new_entry():
         "description": description_from_user,
         "rating": rating_from_user
     })
+
+    with open('entries.csv', 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, entries[0].keys())
+        dict_writer.writeheader()
+        dict_writer.writerows(entries)
 
     return redirect("/")
 
