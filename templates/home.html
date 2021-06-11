@@ -1,5 +1,8 @@
 <style>
     html {
+        box-sizing: border-box;
+        
+        
         background-color:aliceblue;
         background-image: linear-gradient(#f0f8ff, #447aaa);
 
@@ -9,7 +12,22 @@
         font-weight: bolder;
         padding-left: 100px;
     }
-
+    form{
+        border: 2px solid cadetblue;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+    .type{
+        height: 300px;
+        background: cornsilk;
+    }
+    .title{
+        height: 300px;
+        background: darkgray;
+    }
+ 
     label {
         color: rgb(10, 8, 88);
         padding: 10px;
@@ -24,12 +42,36 @@
     }
 
     h1 {
+        border: 2px solid cadetblue;
+        height:100px;
+        
         color: rgb(10, 8, 88);
+        text-align:center;
+    }
+    p {
+        border: 2px solid cadetblue;
+        color: rgb(10, 8, 88);
+        font-style: initial; 
+        padding-left:initial;
         text-align: center;
+    }
+    .rating {
+        unicode-bidi: bidi-override;
+        direction: rtl;
+    }
+    .rating > span {
+        display: inline-block;
+        position: relative;
+        width: 1.1em;
+    }
+    .rating > span:hover:before,
+    .rating > span:hover ~ span:before {
+        content: "\2605";
+        position: absolute;
     }
 </style>
 <h1>
-    <u>Academy preferred Locations</u>
+    <p1>Academy preferred Locations</p1>
 </h1>
 
 <form action="/new_entry">
@@ -44,7 +86,12 @@
     <label for="city">City:</label><br>
     <input type="text" id="city" name="city"><br>
     <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description">
+    <input type="text" id="description" name="description"><br>
+    <label for="rating">Rating:</label>
+    <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </div>
+        <br>
     <input type="submit" value="Submit">
 </form>
 
