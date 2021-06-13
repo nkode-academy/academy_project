@@ -33,8 +33,8 @@
     </head>
 
     <body>
-        <a href=/Users/dad/Programming/Academy_Final_Project/ramen.jpeg>
-            <img height=200 src="/Users/dad/Programming/Academy_Final_Project/ramen.jpeg" alt="Top website picture">
+        <a href="/static/ramen.jpeg">
+            <img height=200 src="/static/ramen.jpeg" alt="Top website picture">
         </a>
         <br><br>
         <h1>
@@ -44,7 +44,7 @@
         <div class="container">
             <div class="box-1">
                 <iframe width="450" height="300" style="border:1px" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPWjc5ye-z_PiPj3Q9BttUasp5k8zj6xY
-            &q={{title}}">
+            &q={{entry["title"]}}+{{entry["city"]}}">
                 </iframe>
             </div>
             <div class="box-2">
@@ -52,7 +52,7 @@
                     Description and Rating
                 </h2>
                 <p>
-                    it is so wonderful
+                    {{entry["description"]}}
                 </p>
             </div>
             <div class="box-3">
@@ -60,12 +60,12 @@
                     Must Order
                 </h2>
                 <p>
-                    insert must order reference here (or alternatives)
+                    {{entry["rating"]}}
                 </p>
             </div>
         </div>
         <br><br>
-        <a href="./home.html">back to homepage</a>
+        <a href="/">back to homepage</a>
         
     </body>
     

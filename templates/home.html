@@ -9,6 +9,11 @@
         background-attachment: fixed;
         background-position: center center;
           
+        box-sizing: border-box;
+
+
+        background-color: aliceblue;
+        background-image: linear-gradient(#f0f8ff, #447aaa);
 
         font-family:Arial, Helvetica, sans-serif;
         color: #666;
@@ -17,22 +22,25 @@
         font-weight: bolder;
         padding-left: 100px;
     }
-    form{
+
+    form {
         border: 2px solid cadetblue;
         padding: 20px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 2rem;
     }
-    .type{
+
+    .type {
         height: 300px;
         background: cornsilk;
     }
-    .title{
+
+    .title {
         height: 300px;
         background: darkgray;
     }
- 
+
     label {
         color: #666;
         padding: 10px;
@@ -51,13 +59,22 @@
         text-align: center center;
         color: #666;
 
+    h1 {
+        border: 2px solid cadetblue;
+        height: 100px;
+
+        color: rgb(10, 8, 88);
+        text-align: center;
     }
+
     p {
         border: 2px solid cadetblue;
         color: rgb(10, 8, 88);
         align-content: center;
         font-style: initial; 
         padding-left:initial;
+        font-style: initial;
+        padding-left: initial;
         text-align: center;
     }
     .locationtype{
@@ -73,6 +90,8 @@
 <form action="/new_entry">
    <div class="locationtype"><label for="type">Type:</label><br>
     <select name="type" method="GET" action="/">
+    <label for="type">Type:</label><br>
+    <select name="type">
         {%for type in location_types%}
         <option value="{{ type }}">{{ type }}</option>
         {%endfor%}
@@ -80,14 +99,22 @@
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
     <label for="city">City:</label><br>
-    <input type="text" id="city" name="city"><br>
+    <input type="text" maxlength="50" id="city" name="city"><br>
     <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description">
+    <input type="text" id="description" name="description"><br>
+    <label for="rating">Rating:</label>
+    <select name="rating">
+        <option value="1"> ☆ </option>
+        <option value="2"> ☆☆ </option>
+        <option value="3"> ☆☆☆ </option>
+        <option value="4"> ☆☆☆☆ </option>
+        <option value="5"> ☆☆☆☆☆ </option>
+    </select><br>
     <input type="submit" value="Submit">
 </form>
 
 {%for entry in entries%}
-<a href="/details?title={{ entry["title"] }}">
+<a href="/details?index={{ entry[" id"] }}">
     <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
 </a>
 {%endfor%}
