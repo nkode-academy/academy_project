@@ -16,12 +16,26 @@
         padding-left: 100px;
     }
 
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr auto auto;
+        grid-template-rows: 1fr auto;
+        gap: 2rem;
+    }
+
+    .form{
+        grid-column: 7;
+        grid-row-start: 1;
+        grid-row-end:2;
+    }
+
+    .buttons{
+        grid-column-start: 2;
+        grid-column-end: 5;
+    }
+
     form {
         border: 2px solid cadetblue;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 2rem;
     }
 
     .type {
@@ -47,7 +61,6 @@
         color: blanchedalmond;
     }
 
-  
     h1{
         text-align: center center;
         color: #666;}
@@ -77,50 +90,55 @@
     border: none;
     background-color: inherit;
     color:#666;
-    padding: 14px 28px;
     font-size: 16px;
     cursor: pointer;
-    display: inline-block;
-  }
+    }
+
 </style>
 
 <header>
     <h1>Academy preferred Locations</h1>
 </header>
 
-<form action="/new_entry">
-    <div class="locationtype"><label for="type">Type:</label><br>
-    <select name="type" method="GET" action="/">
-    <label for="type">Type:</label><br>
-    <select name="type">
-        {%for type in location_types%}
-        <option value="{{ type }}">{{ type }}</option>
-        {%endfor%}
-    </select><br></div>
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title"><br>
-    <label for="city">City:</label><br>
-    <input type="text" maxlength="50" id="city" name="city"><br>
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description"><br>
-    <label for="rating">Rating:</label>
-    <select name="rating">
-        <option value="1"> ☆ </option>
-        <option value="2"> ☆☆ </option>
-        <option value="3"> ☆☆☆ </option>
-        <option value="4"> ☆☆☆☆ </option>
-        <option value="5"> ☆☆☆☆☆ </option>
-    </select><br>
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <div class="buttons">
+        <button class="btn All entries">All Entries</button>
+        <button class="btn London">London</button>
+        <button class="btn Vienna">Vienna</button>
+        <button class="btn Zurich">Zurich</button>
+    </div>
 
-<button class="btn All entries">All Entries</button>
-<button class="btn London">London</button>
-<button class="btn Vienna">Vienna</button>
-<button class="btn Zurich">Zurich</button>
+    <form action="/new_entry">
+        <div class="locationtype"><label for="type">Type:</label><br>
+        <select name="type" method="GET" action="/">
+        <label for="type">Type:</label><br>
+        <select name="type">
+            {%for type in location_types%}
+            <option value="{{ type }}">{{ type }}</option>
+            {%endfor%}
+        </select><br>
+        </div>
 
-{%for entry in entries%}
-<a href="/details?index={{ entry[" id"] }}">
-    <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
-</a>
-{%endfor%}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="city">City:</label><br>
+        <input type="text" maxlength="50" id="city" name="city"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="rating">Rating:</label>
+        <select name="rating">
+            <option value="1"> ☆ </option>
+            <option value="2"> ☆☆ </option>
+            <option value="3"> ☆☆☆ </option>
+            <option value="4"> ☆☆☆☆ </option>
+            <option value="5"> ☆☆☆☆☆ </option>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+    {%for entry in entries%}
+    <a href="/details?index={{ entry[" id"] }}">
+        <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
+    </a>
+    {%endfor%}
