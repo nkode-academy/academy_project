@@ -18,7 +18,7 @@ def home():
 def details():
     index = int(request.args.get('index'))
 
-    return render_template('details.html', entry=entries[index])
+    return render_template('details.html', entry=entries[index]) 
 
 
 @app.route("/new_entry", methods=['GET'])

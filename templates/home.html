@@ -2,18 +2,11 @@
     html {
         box-sizing:border-box;
         
-        
         background-color:#ffff;
         background-image:url(../pomgranate.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
-          
-        box-sizing: border-box;
-
-
-        background-color: aliceblue;
-        background-image: linear-gradient(#f0f8ff, #447aaa);
 
         font-family:Arial, Helvetica, sans-serif;
         color: #666;
@@ -62,7 +55,6 @@
     h1 {
         border: 2px solid cadetblue;
         height: 100px;
-
         color: rgb(10, 8, 88);
         text-align: center;
     }
@@ -84,18 +76,20 @@
     .btn {
     border: none;
     background-color: inherit;
+    color:#666;
     padding: 14px 28px;
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
   }
 </style>
+
 <header>
     <h1>Academy preferred Locations</h1>
 </header>
 
 <form action="/new_entry">
-   <div class="locationtype"><label for="type">Type:</label><br>
+    <div class="locationtype"><label for="type">Type:</label><br>
     <select name="type" method="GET" action="/">
     <label for="type">Type:</label><br>
     <select name="type">
@@ -119,7 +113,6 @@
     </select><br>
     <input type="submit" value="Submit">
 </form>
-
 
 <button class="btn All entries">All Entries</button>
 <button class="btn London">London</button>
