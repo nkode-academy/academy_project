@@ -57,7 +57,7 @@
   
     h1{
         text-align: center center;
-        color: #666;
+        color: #666;}
 
     h1 {
         border: 2px solid cadetblue;
@@ -80,11 +80,18 @@
     .locationtype{
         background: antiquewhite;
     }
+
+    .btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
 </style>
 <header>
     <h1>Academy preferred Locations</h1>
-        
-        
 </header>
 
 <form action="/new_entry">
@@ -112,6 +119,12 @@
     </select><br>
     <input type="submit" value="Submit">
 </form>
+
+
+<button class="btn All entries">All Entries</button>
+<button class="btn London">London</button>
+<button class="btn Vienna">Vienna</button>
+<button class="btn Zurich">Zurich</button>
 
 {%for entry in entries%}
 <a href="/details?index={{ entry[" id"] }}">
