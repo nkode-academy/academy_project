@@ -18,7 +18,7 @@ def home():
 def details():
     index = int(request.args.get('index'))
 
-    return render_template('details.html', entry=entries[index])
+    return render_template('details.html', entry=entries[index]) 
 
 
 @app.route("/new_entry", methods=['GET'])
@@ -26,7 +26,7 @@ def new_entry():
     global entries
 
     type_of_new_entry = request.args.get('type')
-    title_from_user = request.args.get('title')
+    title_from_user = request.args.get('title')                       
     city_from_user = request.args.get('city')
     description_from_user = request.args.get('description')
     rating_from_user = request.args.get('rating')

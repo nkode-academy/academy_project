@@ -2,7 +2,6 @@
     html {
         box-sizing:border-box;
         
-        
         background-color:#ffff;
         
         font-family:Arial, Helvetica, sans-serif;
@@ -56,6 +55,24 @@
         gap: 2rem;
     }
 
+    .form{
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .buttons{
+        grid-column: 2;
+    }
+
+    .listofentries{
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    form {
+        border: 2px solid cadetblue;
+    }
+
     .type {
         height: 300px;
         background: cornsilk;
@@ -96,7 +113,17 @@
     .locationtype{
         background: antiquewhite;
     }
+
+    .btn {
+    border: none;
+    background-color: inherit;
+    color:#666;
+    font-size: 16px;
+    cursor: pointer;
+    }
+
 </style>
+
 <header>
     
     
@@ -144,3 +171,50 @@
     <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
 </a>
 {%endfor%}
+    <h1>Academy preferred Locations</h1>
+</header>
+
+<div class="container">
+    <div class="buttons">
+        <button class="btn All entries">All Entries</button>
+        <button class="btn London">London</button>
+        <button class="btn Vienna">Vienna</button>
+        <button class="btn Zurich">Zurich</button>
+    </div>
+
+    <form action="/new_entry">
+        <div class="locationtype"><label for="type">Type:</label><br>
+        <select name="type" method="GET" action="/">
+        <label for="type">Type:</label><br>
+        <select name="type">
+            {%for type in location_types%}
+            <option value="{{ type }}">{{ type }}</option>
+            {%endfor%}
+        </select><br>
+        </div>
+
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="city">City:</label><br>
+        <input type="text" maxlength="50" id="city" name="city"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="rating">Rating:</label>
+        <select name="rating">
+            <option value="1"> ☆ </option>
+            <option value="2"> ☆☆ </option>
+            <option value="3"> ☆☆☆ </option>
+            <option value="4"> ☆☆☆☆ </option>
+            <option value="5"> ☆☆☆☆☆ </option>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div class="listofentries">
+    {%for entry in entries%}
+    <a href="/details?index={{ entry[" id"] }}">
+        <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
+    </a>
+    {%endfor%}
+    </div>
+</div>
