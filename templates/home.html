@@ -18,20 +18,23 @@
 
     .container{
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr auto auto;
-        grid-template-rows: 1fr auto;
+        grid-template-columns: 15px 1fr 1fr;
+        grid-template-rows: 20px 1fr;
         gap: 2rem;
     }
 
     .form{
-        grid-column: 7;
-        grid-row-start: 1;
-        grid-row-end:2;
+        grid-column: 3;
+        grid-row: 2;
     }
 
     .buttons{
-        grid-column-start: 2;
-        grid-column-end: 5;
+        grid-column: 2;
+    }
+
+    .listofentries{
+        grid-column: 2;
+        grid-row: 2;
     }
 
     form {
@@ -135,10 +138,12 @@
         </select><br>
         <input type="submit" value="Submit">
     </form>
-</div>
 
+    <div class="listofentries">
     {%for entry in entries%}
     <a href="/details?index={{ entry[" id"] }}">
         <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
     </a>
     {%endfor%}
+    </div>
+</div>
