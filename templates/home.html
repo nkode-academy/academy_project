@@ -12,29 +12,21 @@
         padding-left: 20px;
         padding-right: 100px;
     }
+
     header{
         box-sizing:border-box;
         border: 2px solid cadetblue;
         padding-top: 24%;
         padding-left: 10%;
-        
-    
-       
         height: 500px;
         background-image: url("/static/pomgranate.jpeg");
         background-repeat: no-repeat;
         background-position: center;
         width: 100%;
         color:#fff;
-        
-        
-
     }
-    
-   
-    
+
     h1 span {
-        
         font-weight: bolder;
         font-size:100%;
         letter-spacing: 0.1em;
@@ -42,19 +34,22 @@
         background:rgba(0,0,0,0.02);
         padding-top: 10px;
         padding-left: 50px;
-        padding-bottom: 10px;
-        
-        
+        padding-bottom: 10px; 
     }
+
     form {
         box-sizing:border-box;
         border: 2px solid cadetblue;
         padding: 20px;
-        display:grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 2rem;
     }
 
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 5fr 2fr;
+        grid-template-rows: 5fr 20fr 5fr;
+        grid-gap: 10px;
+        height: 720px;
+    }
     .form{
         grid-column: 3;
         grid-row: 2;
@@ -96,9 +91,6 @@
         color: blanchedalmond;
     }
 
-  
-    
-
     p{
         border: 2px solid cadetblue;
         color: rgb(10, 8, 88);
@@ -125,53 +117,7 @@
 </style>
 
 <header>
-    
-    
-        
-        <h1><span>Academy preferred Locations</span></h1>
-
-    
-
-        
-
-    
-        
-        
-</header>
-
-<form action="/new_entry">
-   <div class="locationtype"><label for="type">Type:</label><br>
-    <select name="type" method="GET" action="/">
-    <label for="type">Type:</label><br>
-    <select name="type">
-        {%for type in location_types%}
-        <option value="{{ type }}">{{ type }}</option>
-        {%endfor%}
-    </select><br></div>
-
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title"><br>
-    <label for="city">City:</label><br>
-    <input type="text" maxlength="50" id="city" name="city"><br>
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description"><br>
-    <label for="rating">Rating:</label>
-    <select name="rating">
-        <option value="1"> ☆ </option>
-        <option value="2"> ☆☆ </option>
-        <option value="3"> ☆☆☆ </option>
-        <option value="4"> ☆☆☆☆ </option>
-        <option value="5"> ☆☆☆☆☆ </option>
-    </select><br>
-    <input type="submit" value="Submit">
-</form>
-
-{%for entry in entries%}
-<a href="/details?index={{ entry[" id"] }}">
-    <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
-</a>
-{%endfor%}
-    <h1>Academy preferred Locations</h1>
+        <h1><span>Academy preferred Locations</span></h1>      
 </header>
 
 <div class="container">
