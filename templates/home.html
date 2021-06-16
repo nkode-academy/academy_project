@@ -1,9 +1,7 @@
 <style>
     html {
         box-sizing:border-box;
-        
         background-color:#ffff;
-        
         font-family:Arial, Helvetica, sans-serif;
         color: #666;
         font-size: x-large;
@@ -41,9 +39,11 @@
         grid-template-rows: 50px auto;
         grid-gap: 10px;
         height: 720px;
+        text-align: left;
     }
     .form{
         grid-column: 3;
+        text-align: left;
     }
 
     .buttons{
@@ -58,31 +58,31 @@
     .type {
         height: 300px;
         background: cornsilk;
+        text-align: left;
     }
 
     .title {
         height: 300px;
         background: darkgray;
+        text-align: left;
     }
 
     label {
         color: #666;
-        padding: 10px;
-        margin: 50px;
+        text-align: left;
     }
 
     input,
     select {
-        margin: 10px;
         background: black;
         color: blanchedalmond;
+        text-align: left;
     }
 
     p{
         color: rgb(10, 8, 88);
         align-content: left;
         font-style: initial; 
-        padding-left:initial;
         text-align: left;
     }
 
@@ -109,7 +109,7 @@
     </div>
 
     <form action="/new_entry">
-        <div class="locationtype"><label for="type">Type:</label><br>
+        <div class="locationtype"><label for="type">Type of Location:</label><br>
         <select name="type" method="GET" action="/">
         <label for="type">Type:</label><br>
         <select name="type">
@@ -139,7 +139,7 @@
     <div class="listofentries">
     {%for entry in entries%}
     <a href="/details?index={{ entry[" id"] }}">
-        <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}</p>
+        <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}- {{ entry["rating"] }} stars</p>
     </a>
     {%endfor%}
     </div>
