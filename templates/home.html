@@ -34,7 +34,7 @@
 
     .container{
         display: grid;
-        grid-template-columns: 5fr 2fr;
+        grid-template-columns: 3fr 2fr;
         grid-template-rows: 50px auto;
         margin-left: 50px;
     }
@@ -106,15 +106,12 @@
     </div>
 
     <form action="/new_entry">
-        <div class="locationtype"><label for="type">Type of Location:</label><br>
-        <select name="type" method="GET" action="/">
-        <label for="type">Type:</label><br>
+        <label for="type">Type of Location:</label><br>
         <select name="type">
             {%for type in location_types%}
             <option value="{{ type }}">{{ type }}</option>
             {%endfor%}
         </select><br>
-        </div>
 
         <label for="title">Title:</label><br>
         <input type="text" id="title" name="title"><br>
