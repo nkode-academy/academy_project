@@ -88,7 +88,7 @@ class CloudDataStorage:
 
     def get_entries(self):
         query = self._client.query(kind=ENTITY_TYPE)
-        return list({**entity.__dict__, 'id': entity.id} for entity in query.fetch())
+        return list({**entity, 'id': entity.id} for entity in query.fetch())
 
     def get_entry_with_id(self, identifier):
         key = self._client.key(ENTITY_TYPE, identifier)
