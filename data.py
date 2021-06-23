@@ -77,4 +77,29 @@ class CloudStorageCSVDataStorage:
             blob.upload_from_filename(output_file.name)
 
 
-data_store = LocalCSVDataStorage() if not IS_APP_ENGINE else CloudStorageCSVDataStorage()
+ENTITY_TYPE = "RestiReview"
+
+
+class CloudDataStorage:
+    def __init__(self):
+        from google.cloud import datastore
+        self._datastore = datastore
+        self._client = datastore.Client()
+
+    def get_entries(self):
+        query = self._client.query(kind=ENTITY_TYPE)
+        return map(lambda entity: {**entity.__dict__, 'id': entity.id}, query.fetch())
+
+    def get_entry_with_id(self, identifier):
+        key = self._client.key(ENTITY_TYPE, identifier)
+        review = self._client.get(key)
+        return review
+
+    def add_entry(self, new_entry):
+        identifier = self._client.key(ENTITY_TYPE)
+        review = self._datastore.Entity(identifier)
+        review.update(new_entry)
+        self._client.put(review)
+
+
+data_store = LocalCSVDataStorage() if not IS_APP_ENGINE else CloudDataStorage()
