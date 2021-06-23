@@ -67,7 +67,7 @@ class CloudStorageCSVDataStorage:
         new_entry["id"] = len(self._entries)
         self._entries.append(new_entry)
 
-        with tempfile.TemporaryFile(mode='w') as output_file:
+        with tempfile.TemporaryFile(mode='rw') as output_file:
             dict_writer = csv.DictWriter(output_file, self._entries[0].keys())
             dict_writer.writeheader()
             dict_writer.writerows(self._entries)
