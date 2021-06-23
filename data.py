@@ -48,6 +48,7 @@ class CloudStorageCSVDataStorage:
 
     def _initialize_entries(self):
         try:
+            self._entries = []
             blob = self._bucket.get_blob(ENTRIES_FILE_NAME)
             csv_string = blob.download_as_string()
             csv_lines = csv_string.splitlines()
@@ -58,6 +59,7 @@ class CloudStorageCSVDataStorage:
             print("No entries file found. Starting with zero entries.")
 
     def get_entries(self):
+        self._initialize_entries()
         return self._entries
 
     def get_entry_with_id(self, identifier):
@@ -72,8 +74,6 @@ class CloudStorageCSVDataStorage:
             dict_writer.writeheader()
             dict_writer.writerows(self._entries)
             blob = self._bucket.blob(ENTRIES_FILE_NAME)
-
-            output_file.seek(0)
             blob.upload_from_filename(output_file.name)
 
 
