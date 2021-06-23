@@ -3,3 +3,6 @@ runtime: python39
 handlers:
 - url: /.*
   script: auto
+
+env_variables:
+  CLOUD_STORAGE_BUCKET: academy-315805.appspot.com
