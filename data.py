@@ -67,14 +67,14 @@ class CloudStorageCSVDataStorage:
         new_entry["id"] = len(self._entries)
         self._entries.append(new_entry)
 
-        with tempfile.TemporaryFile(mode='rw') as output_file:
+        with tempfile.NamedTemporaryFile(mode='w') as output_file:
             dict_writer = csv.DictWriter(output_file, self._entries[0].keys())
             dict_writer.writeheader()
             dict_writer.writerows(self._entries)
             blob = self._bucket.blob(ENTRIES_FILE_NAME)
 
             output_file.seek(0)
-            blob.upload_from_file(output_file)
+            blob.upload_from_filename(output_file.name)
 
 
 data_store = LocalCSVDataStorage() if not IS_APP_ENGINE else CloudStorageCSVDataStorage()
