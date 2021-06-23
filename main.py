@@ -1,12 +1,12 @@
 from flask import Flask, request, redirect, render_template
-from data import add_entry, get_entries, get_entry_with_id
+from data import data_store
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    entries = get_entries()
+    entries = data_store.get_entries()
     return render_template(
         'home.html',
         entries=reversed(entries),
@@ -21,7 +21,7 @@ def home():
 @app.route("/details")
 def details():
     index = int(request.args.get('index'))
-    return render_template('details.html', entry=get_entry_with_id(index))
+    return render_template('details.html', entry=data_store.get_entry_with_id(index))
 
 
 @app.route("/new_entry", methods=['GET'])
@@ -32,7 +32,7 @@ def new_entry():
     description_from_user = request.args.get('description')
     rating_from_user = request.args.get('rating')
 
-    add_entry({
+    data_store.add_entry({
         "type": type_of_new_entry,
         "title": title_from_user,
         "city": city_from_user,
