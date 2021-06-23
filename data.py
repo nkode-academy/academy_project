@@ -73,7 +73,7 @@ class CloudStorageCSVDataStorage:
             dict_writer.writerows(self._entries)
             blob = self._bucket.blob(ENTRIES_FILE_NAME)
 
-            f.seek(0)
+            output_file.seek(0)
             blob.upload_from_file(output_file)
 
 
