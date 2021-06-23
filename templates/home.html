@@ -132,7 +132,7 @@
 
     <div class="listofentries">
     {%for entry in entries%}
-    <a href="/details?index={{ entry[" id"] }}">
+    <a href="/details?index={{ entry["id"] }}">
         <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}- {{ entry["rating"] }} stars</p>
     </a>
     {%endfor%}
