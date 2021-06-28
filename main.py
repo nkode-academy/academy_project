@@ -1,49 +1,44 @@
 from flask import Flask, request, redirect, render_template
-import csv
+from data import data_store
 
 app = Flask(__name__)
-
-input_file = csv.DictReader(open("entries.csv"))
-entries = []
-for row in input_file:
-    entries.append(row)
 
 
 @app.route("/")
 def home():
-    return render_template('home.html', entries=reversed(entries), location_types=['Restaurant', 'Hotel', 'Museum', 'Venues'])
+    entries = data_store.get_entries()
+    return render_template(
+        'home.html',
+        entries=reversed(entries),
+        location_types=[
+            'Restaurant',
+            'Hotel',
+            'Museum',
+            'Venues']
+    )
 
 
 @app.route("/details")
 def details():
     index = int(request.args.get('index'))
-
-    return render_template('details.html', entry=entries[index]) 
+    return render_template('details.html', entry=data_store.get_entry_with_id(index))
 
 
 @app.route("/new_entry", methods=['GET'])
 def new_entry():
-    global entries
-
     type_of_new_entry = request.args.get('type')
-    title_from_user = request.args.get('title')                       
+    title_from_user = request.args.get('title')
     city_from_user = request.args.get('city')
     description_from_user = request.args.get('description')
     rating_from_user = request.args.get('rating')
 
-    entries.append({
-        "id": len(entries),
+    data_store.add_entry({
         "type": type_of_new_entry,
         "title": title_from_user,
         "city": city_from_user,
         "description": description_from_user,
         "rating": rating_from_user
     })
-
-    with open('entries.csv', 'w') as output_file:
-        dict_writer = csv.DictWriter(output_file, entries[0].keys())
-        dict_writer.writeheader()
-        dict_writer.writerows(entries)
 
     return redirect("/")
 
