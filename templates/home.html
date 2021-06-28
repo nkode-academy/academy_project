@@ -17,7 +17,7 @@
         background-image: url("/static/pomgranate.jpeg");
         background-repeat: no-repeat;
         background-position: center;
-        position: relative;
+        
         width: 100%;
         color:#fff;
 
@@ -29,7 +29,7 @@
         letter-spacing: 0.1em;
         color:#fff;
         background:rgba(0,0,0,0.02);
-        position: absolute;
+        
         padding-top: 10px;
         padding-left: 50px;
         padding-bottom: 10px; 
@@ -136,11 +136,7 @@
 
     <div class="listofentries">
     {%for entry in entries%}
-<<<<<<< HEAD
     <a href="/details?index={{entry["id"] }}">
-=======
-    <a href="/details?index={{ entry["id"] }}">
->>>>>>> 9d87ad8aefabf82777c423a0b0edcce2623619a0
         <p>{{ entry["type"] }} - {{ entry["title"] }} - {{ entry["city"] }} - {{ entry["description"] }}- {{ entry["rating"] }} stars</p>
     </a>
     {%endfor%}
