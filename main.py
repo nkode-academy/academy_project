@@ -7,9 +7,20 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     entries = data_store.get_entries()
+    filter_city = request.args.get('city')
+    filtered_entries = []
+    if filter_city == None:
+        filtered_entries = entries
+    else:
+        for entry in entries: 
+            city = entry['city']
+            if city.lower().strip() == filter_city.lower().strip():
+                filtered_entries.append(entry)
+        
+
     return render_template(
         'home.html',
-        entries=reversed(entries),
+        entries=reversed(filtered_entries),
         location_types=[
             'Restaurant',
             'Hotel',
