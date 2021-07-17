@@ -57,3 +57,4 @@ def new_entry():
 if __name__ == '__main__':
     # this is run when clicking the run button in VSCode
     app.run(host='127.0.0.1', port=8080, debug=True)
+
